@@ -18,11 +18,8 @@ class Movie(models.Model):
     duration = models.PositiveIntegerField()
     director = models.ForeignKey(Director, on_delete=models.CASCADE,
                                  related_name='movies')
-
-
     def __str__(self):
         return self.title
-
 
     @property
     def count_reviews(self):
@@ -32,7 +29,6 @@ class Movie(models.Model):
 class Review(models.Model):
     text = models.TextField()
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='reviews')
-
     stars = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
 
 
